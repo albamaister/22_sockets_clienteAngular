@@ -55,6 +55,10 @@ export class WebsocketService {
 
   }
 
+  getUsuario() {
+    return this.usuario;
+  }
+
   guardarStorage() {
     localStorage.setItem('usuario', JSON.stringify(this.usuario));
   }
@@ -62,6 +66,7 @@ export class WebsocketService {
   cargarStorage() {
     if (localStorage.getItem('usuario')) {
       this.usuario = JSON.parse( localStorage.getItem('usuario'));
+      this.loginWS( this.usuario.nombre );
     }
   }
 }
